@@ -304,7 +304,7 @@ namespace Classifier
                     croppedImg[k] = filter.Apply(bwimage);
                     ResizeBicubic rbc = new ResizeBicubic(60, 90);
                     croppedImg[k] = rbc.Apply(croppedImg[k]);
-                    croppedImg[k].Save(sv.browseBoundaryDetectionPath + "\\img_" + k + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    croppedImg[k].Save(sv.browseFileBoundaryDetectionPath + "\\img_" + k + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
                 catch
                 {
@@ -317,8 +317,8 @@ namespace Classifier
 
 
 
-            string loc1 = sv.browseBoundaryDetectionPath;
-            FileStream fs = new FileStream(sv.browseFeatureExtractionFile, FileMode.Create, FileAccess.Write);
+            string loc1 = sv.browseFileBoundaryDetectionPath;
+            FileStream fs = new FileStream(sv.browseFileFeatureExtractionFile, FileMode.Create, FileAccess.Write);
             StreamWriter sr = new StreamWriter(fs);
 
             String[] straimageloc = System.IO.Directory.GetFiles(loc1, "*.jpg*");
@@ -392,17 +392,17 @@ namespace Classifier
             fs.Close();
 
             SVMClassifier svm = new SVMClassifier();
-            svm.testClassifier(sv.browseFeatureExtractionFile);
+            svm.Classify();
+
+            System.Diagnostics.Process.Start(@"E:\ocr\results.txt");
 
         }
 
         private void classifierBtn_Click(object sender, EventArgs e)
         {
-
-            SVMClassifier svm = new SVMClassifier();
-            svm = new SVMClassifier();
-            StringValues sv = new StringValues();
-            svm.trainClassifier(sv.trainFilePath);
+          //  cf = new SVMClassifier();
+            //StringValues sv = new StringValues();
+         //   cf.trainClassifier(sv.trainFilePath);
         }
     }
 }
