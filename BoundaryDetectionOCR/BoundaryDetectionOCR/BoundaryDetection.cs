@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Classifier
@@ -119,7 +120,6 @@ namespace Classifier
                 if ((tempy[p - 1] != tempy[p] - 1) || (tempy[p] + 1 != tempy[p + 1]))
                 {
                     yaxis[i++] = tempy[p] + 1;
-                    Console.WriteLine(yaxis[p]);
                 }
             }
             return yaxis;
@@ -205,7 +205,6 @@ namespace Classifier
                            
                         }
                     }
-                    Console.WriteLine(norvar);
                     for (int j = 0; j < 90; j += 10)
                     {
                         for (int i = 0; i < 60; i += 10)
@@ -220,7 +219,6 @@ namespace Classifier
                                 }
                             }
                             zone[j, i] = x / norvar;
-                            Console.Write(" " + zone[j, i]);
                             data += index++ + ":" + zone[j, i] + " ";
 
                         }
@@ -356,7 +354,6 @@ namespace Classifier
 
                     }
                 }
-                Console.WriteLine(norvar);
                 for ( j = 0; j < 90; j += 10)
                 {
                     for ( i = 0; i < 60; i += 10)
@@ -371,7 +368,6 @@ namespace Classifier
                             }
                         }
                         zone[j, i] = x / norvar;
-                        Console.Write(" " + zone[j, i]);
                         data += index++ + ":" + zone[j, i] + " ";
 
                     }
@@ -394,8 +390,14 @@ namespace Classifier
             SVMClassifier svm = new SVMClassifier();
             svm.Classify();
 
-            System.Diagnostics.Process.Start(@"E:\ocr\results.txt");
+         
+            foreach (string line in File.ReadLines(sv.finalOutputFile, Encoding.UTF8))
+            {
+                Console.WriteLine(line);
+                string c = Char.ConvertFromUtf32(Int32.Parse(line)+64);
+                outputLabel.Text += c;
 
+            }
         }
 
         private void classifierBtn_Click(object sender, EventArgs e)

@@ -32,12 +32,13 @@
             this.processImgBtn = new System.Windows.Forms.Button();
             this.featureExtractionBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.classifierBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.detectBtn = new System.Windows.Forms.Button();
             this.browseLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.browseBtn = new System.Windows.Forms.Button();
-            this.detectBtn = new System.Windows.Forms.Button();
-            this.classifierBtn = new System.Windows.Forms.Button();
+            this.outputLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -85,10 +86,21 @@
             this.panel1.Size = new System.Drawing.Size(499, 140);
             this.panel1.TabIndex = 3;
             // 
+            // classifierBtn
+            // 
+            this.classifierBtn.Location = new System.Drawing.Point(335, 80);
+            this.classifierBtn.Name = "classifierBtn";
+            this.classifierBtn.Size = new System.Drawing.Size(94, 29);
+            this.classifierBtn.TabIndex = 3;
+            this.classifierBtn.Text = "Train Classifier";
+            this.classifierBtn.UseVisualStyleBackColor = true;
+            this.classifierBtn.Click += new System.EventHandler(this.classifierBtn_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.outputLabel);
             this.panel2.Controls.Add(this.detectBtn);
             this.panel2.Controls.Add(this.browseLabel);
             this.panel2.Controls.Add(this.label2);
@@ -97,6 +109,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(499, 181);
             this.panel2.TabIndex = 3;
+            // 
+            // detectBtn
+            // 
+            this.detectBtn.Location = new System.Drawing.Point(293, 41);
+            this.detectBtn.Name = "detectBtn";
+            this.detectBtn.Size = new System.Drawing.Size(75, 23);
+            this.detectBtn.TabIndex = 3;
+            this.detectBtn.Text = "Detect";
+            this.detectBtn.UseVisualStyleBackColor = true;
+            this.detectBtn.Click += new System.EventHandler(this.detectBtn_Click);
             // 
             // browseLabel
             // 
@@ -126,25 +148,14 @@
             this.browseBtn.UseVisualStyleBackColor = true;
             this.browseBtn.Click += new System.EventHandler(this.browseBtn_Click);
             // 
-            // detectBtn
+            // outputLabel
             // 
-            this.detectBtn.Location = new System.Drawing.Point(293, 41);
-            this.detectBtn.Name = "detectBtn";
-            this.detectBtn.Size = new System.Drawing.Size(75, 23);
-            this.detectBtn.TabIndex = 3;
-            this.detectBtn.Text = "Detect";
-            this.detectBtn.UseVisualStyleBackColor = true;
-            this.detectBtn.Click += new System.EventHandler(this.detectBtn_Click);
-            // 
-            // classifierBtn
-            // 
-            this.classifierBtn.Location = new System.Drawing.Point(335, 80);
-            this.classifierBtn.Name = "classifierBtn";
-            this.classifierBtn.Size = new System.Drawing.Size(94, 29);
-            this.classifierBtn.TabIndex = 3;
-            this.classifierBtn.Text = "Train Classifier";
-            this.classifierBtn.UseVisualStyleBackColor = true;
-            this.classifierBtn.Click += new System.EventHandler(this.classifierBtn_Click);
+            this.outputLabel.AutoSize = true;
+            this.outputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outputLabel.Location = new System.Drawing.Point(313, 106);
+            this.outputLabel.Name = "outputLabel";
+            this.outputLabel.Size = new System.Drawing.Size(0, 25);
+            this.outputLabel.TabIndex = 4;
             // 
             // BoundaryDetection
             // 
@@ -175,6 +186,7 @@
         private System.Windows.Forms.Label browseLabel;
         private System.Windows.Forms.Button detectBtn;
         private System.Windows.Forms.Button classifierBtn;
+        private System.Windows.Forms.Label outputLabel;
     }
 }
 
