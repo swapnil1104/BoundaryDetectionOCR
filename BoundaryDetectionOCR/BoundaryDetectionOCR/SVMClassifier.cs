@@ -32,8 +32,8 @@ public class SVMClassifier
         Parameter param = new Parameter();
         double C;
         double Gamma;
-        param.C = 32;
-        param.Gamma = 8;
+        param.C = 64;
+        param.Gamma = 16;
         Model model = Training.Train(train, param);
         Prediction.Predict(test, @"E:\ocr\results.txt", model, false);
     }
